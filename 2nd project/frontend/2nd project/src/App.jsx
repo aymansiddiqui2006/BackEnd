@@ -6,9 +6,9 @@ function App() {
   const [joke, setjokes] = useState([])
 
   useEffect(() => {
-    aixos.get('http://localhost:3000/jokes')
+    aixos.get('/api/jokes')
       .then((res) => {
-        setjokes(res.data)
+        setjokes(res.data) 
       })
       .catch((err) => {
         console.log(err)
@@ -20,11 +20,12 @@ function App() {
       <p>jokes:{joke.length}</p>
 
       {
-        joke.map((joke) => {
-          <div><h3>{joke.name}</h3>
-            <p key={joke.id}></p>
+        joke.map((joke) => (
+          <div key={joke.id}>
+
+            <h3>{joke.name}</h3>
           </div>
-        })
+        ))
       }
     </>
   )
